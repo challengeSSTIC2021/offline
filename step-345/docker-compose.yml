@@ -27,7 +27,7 @@ services:
     restart: always
     cpu_count: 1
     cpus: '0.50'
-    mem_limit: 250M
+    mem_limit: 450M
 volumes:
   sharedVol: {}
 
