@@ -3,7 +3,7 @@ services:
   service:
     build: ./service
     ports:
-        - "1337:1337"
+      - "1337:1337"
   web:
     build: ./nginx
     ports:
