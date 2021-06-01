@@ -1,0 +1,29 @@
+version: "2.4"
+services:
+  web:
+    build: ./nginx
+    ports:
+      - "8080:8080"
+    volumes:
+      - sharedVol:/var/www/api/.wb_generator
+    cap_drop:
+      - ALL
+    restart: always
+    cpu_count: 1
+    cpus: '1'
+    mem_limit: 500M
+  build:
+    build: ./whitebox_builder
+    command: ["-k", "8bf40a6c7cdaea37bfc2bd5a373c1dc1", "-t", "300", "-s", "ffffffffffffffff"]
+    volumes:
+      - sharedVol:/home/docker-user/out
+    cap_drop:
+      - ALL
+    network_mode: "none"
+    restart: always
+    cpu_count: 1
+    cpus: '0.50'
+    mem_limit: 250M
+volumes:
+  sharedVol: {}
+
